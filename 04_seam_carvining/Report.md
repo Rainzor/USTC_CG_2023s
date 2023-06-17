@@ -289,7 +289,20 @@ increaseWidth(increase);
 
 对图像进行同比例的扩大或缩小后，得到下图
 
+
 <div align=center>
+    <img style = "
+        border-radius: 0.3125em;
+        box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+       	src="./img/result.png"
+        width = "100%">
+    <br>
+    </div>
+    <p> </p>
+</div>
+
+
+<!-- <div align=center>
     <div style="display: flex; justify-content: space-between; align-items: center;">
         <div style="display: flex; flex-direction: column; align-items: center; margin-right: 20px;">
             <img style = "
@@ -329,7 +342,7 @@ increaseWidth(increase);
         Figure 9: Result
     </div>
     <p> </p>
-</div>
+</div> -->
 
 ### 3.2 显著图对比
 
@@ -338,130 +351,16 @@ increaseWidth(increase);
 <div STYLE="page-break-after: always;"></div>
 
 <div align=center>
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-        <div style="display: flex; flex-direction: column; align-items: center; margin-right: 20px;">
-            <img style = "
-                border-radius: 0.3125em;
-                box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-               	src="./img/400_324_good.png"
-               	width = "85%"
-                alt="Given img">
-            <span style="margin-top: 5px; font-size: 14px;"><b>Given img</b></span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; margin-right: 20px;">
-            <img style = "
-                border-radius: 0.3125em;
-                box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-               	src="./img/400_324_L1.png"
-                width = "85%"	               	
-                alt="L1 Norm">
-            <span style="margin-top: 5px; font-size: 14px;"><b>L1 Norm</b></span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center;">
-            <img style = "
-                border-radius: 0.3125em;
-                box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-               	src="./img/400_324_LG.png"
-               	width = "85%"
-                alt="Local Global">
-            <span style="margin-top: 5px; font-size: 14px;"><b>Local Global</b></span>
-        </div>
-    </div>
+    <img style = "
+        border-radius: 0.3125em;
+        box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+       	src="./img/compare.png"
+        width = "100%">
     <br>
-    <div style = "
-        color: orange;
-        border-bottom: 1px solid #d9d9d9;
-        display: inline-block;
-        color: #999;
-        padding: 2px;">
-        Figure 10: Shrink Width 400&times;324
     </div>
     <p> </p>
 </div>
 
-<div align=center>
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-        <div style="display: flex; flex-direction: column; align-items: center; margin-right: 20px;">
-            <img style = "
-                border-radius: 0.3125em;
-                box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-               	src="./img/500_374_good.png"
-               	width = "40%"
-                alt="Given img">
-            <span style="margin-top: 5px; font-size: 14px;"><b>Given img</b></span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; margin-right: 20px;">
-            <img style = "
-                border-radius: 0.3125em;
-                box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-               	src="./img/500_374_L1.png"
-               	width = "40%"
-                alt="L1 Norm">
-            <span style="margin-top: 5px; font-size: 14px;"><b>L1 Norm</b></span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center;">
-            <img style = "
-                border-radius: 0.3125em;
-                box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-               	src="./img/500_374_LG.png"
-               	width = "40%"
-                alt="Local Global">
-            <span style="margin-top: 5px; font-size: 14px;"><b>Local Global</b></span>
-        </div>
-    </div>
-    <br>
-    <div style = "
-        color: orange;
-        border-bottom: 1px solid #d9d9d9;
-        display: inline-block;
-        color: #999;
-        padding: 2px;">
-        Figure 11: Enlarge Height 500&times;374
-    </div>
-    <p> </p>
-</div>
-
-<div align=center>
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-        <div style="display: flex; flex-direction: column; align-items: center; margin-right: 20px;">
-            <img style = "
-                border-radius: 0.3125em;
-                box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-               	src="./img/600_324_good.png"
-               	width = "85%"
-                alt="Given img">
-            <span style="margin-top: 5px; font-size: 14px;"><b>Given img</b></span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; margin-right: 20px;">
-            <img style = "
-                border-radius: 0.3125em;
-                box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-               	src="./img/600_324_L1.png"
-               	width = "85%"
-                alt="L1 Norm">
-            <span style="margin-top: 5px; font-size: 14px;"><b>L1 Norm</b></span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center;">
-            <img style = "
-                border-radius: 0.3125em;
-                box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-               	src="./img/600_324_LG.png"
-               	width = "85%"
-                alt="Local Global">
-            <span style="margin-top: 2px; font-size: 14px;"><b>Local Global</b></span>
-        </div>
-    </div>
-    <br>
-    <div style = "
-        color: orange;
-        border-bottom: 1px solid #d9d9d9;
-        display: inline-block;
-        color: #999;
-        padding: 2px;">
-        Figure 12: Enlarge Width 600&times;324
-    </div>
-    <p> </p>
-</div>
 
 - Given Map 的结果中的人物的脸的变形程度最小，这是因为在能量图中给人物的脸赋予了很高的能量，而 其它两种算法中人脸处的能量都是很低的。
 - L1 Norm 的结果也对人物的脸进行了一定程度的保持，它的好处在于可以不用依赖于给定的能量图，也可以取得较好的效果。
