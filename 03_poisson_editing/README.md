@@ -23,25 +23,22 @@
 ​	从数学上讲，对于嵌入新背景待求的新图像 $f(x,y)$，背景图形为 $f_b(x,y)$和前景图像为 $g_f(x,y)$ ，而要解决的问题等价于解最优化问题：
 
 $$
-\begin{equation}
-		\min\limits_f \iint _\Omega |\nabla f-\nabla g_f |^2 \ \ \mathrm{with}\ f|_{\partial \Omega}=f_b|_{\partial \Omega}
-	\end{equation}\tag1
+\min\limits_f \iint _\Omega |\nabla f-\nabla g_f |^2 \ \ \mathrm{with}\ f|_{\partial \Omega}=f_b|_{\partial \Omega}
+\tag1
 $$
 
 ​	利用变分法通过 Euler-Lagrange equation 可转化为具有Dirichlet边界条件的Poisson方程：
 
 $$
-\begin{equation}
-		\Delta f= \Delta  g_f\ \mathrm{over}\ \Omega \ \ \mathrm{with}\ f|_{\partial \Omega}=f_b|_{\partial \Omega}
-	\end{equation}\tag2
+\Delta f= \Delta  g_f\ \mathrm{over}\ \Omega \ \ \mathrm{with}\ f|_{\partial \Omega}=f_b|_{\partial \Omega}
+\tag2
 $$
 
 ​	如果令 $\widetilde f=f-g_f$，$(f_b-g_f)=\varphi$那么该问题就可以转换成求解 Laplace 方程的边界问题：
 
 $$
-\begin{equation}
-		\Delta \widetilde f= 0\ \mathrm{over}\ \Omega \ \ \mathrm{with}\widetilde f|_{\partial \Omega}=(f^*-g)|_{\partial \Omega}=\varphi|_{\partial \Omega}
-	\end{equation}\tag3
+\Delta \widetilde f= 0\ \mathrm{over}\ \Omega \ \ \mathrm{with}\widetilde f|_{\partial \Omega}=(f^*-g)|_{\partial \Omega}=\varphi|_{\partial \Omega}
+\tag3
 $$
 
 这里的 $f_b, g_f, \varphi$都是已知的条件，而 $\widetilde f$ 是待求解的函数。
@@ -67,11 +64,11 @@ $$
 设 $\widetilde f_{ij}=u_{ij},\varphi_p=\varphi_{ij}$
 
 $$
-4u_{i,j}-u_{i,j-1}-u_{i-1,j}-u_{i+1,j}-u_{i,j+1}=0\quad(i,j)\in \Omega\backslash\part\Omega\tag6
+4u_{i,j}-u_{i,j-1}-u_{i-1,j}-u_{i+1,j}-u_{i,j+1}=0\quad(i,j)\in \Omega\backslash\partial\Omega\tag6
 $$
 
 $$
-u_{k,l}=\varphi(k,l)\quad (k,l)\in\part\Omega\tag7
+u_{k,l}=\varphi(k,l)\quad (k,l)\in\partial\Omega\tag7
 $$
 
 
@@ -81,12 +78,12 @@ $$
 
 对于更加一般的边界，算法描述如下
 
-0. 初始化，设 $\Omega\backslash\part\Omega$内的像素点共有 $N$ 个，建立 $N\times N$ 系数矩阵`sparse_mat=0`,以及代求N维待求向量 `vec` 。同时假设区域 $S$ 内公有 $n\times m$各像素点，从起始点出发。
+0. 初始化，设 $\Omega\backslash\partial\Omega$内的像素点共有 $N$ 个，建立 $N\times N$ 系数矩阵`sparse_mat=0`,以及代求N维待求向量 `vec` 。同时假设区域 $S$ 内公有 $n\times m$各像素点，从起始点出发。
 1. 遍历区域 S 内的像素点（i,j）
-2. 如果 $(i,j)\in\Omega\backslash\part\Omega$，设`index(i,j) = sub2ind(i,j)`
+2. 如果 $(i,j)\in\Omega\backslash\partial\Omega$，设`index(i,j) = sub2ind(i,j)`
    - `sparse_mat[index(i,j)][index(i,j)]= 4`
-   - 如果 $(i,j)$周围的点 $\bold q\in \Omega\backslash\part\Omega$,那么 `sparse_mat[index(i,j)][index(q)]=-1`
-   - 如果 $(i,j)$周围的点 $\bold q\in \part\Omega$,那么 `vec[index(q)]=`$\varphi$`[index(q)]`
+   - 如果 $(i,j)$周围的点 $\bold q\in \Omega\backslash\partial\Omega$,那么 `sparse_mat[index(i,j)][index(q)]=-1`
+   - 如果 $(i,j)$周围的点 $\bold q\in \partial\Omega$,那么 `vec[index(q)]=`$\varphi$`[index(q)]`
    - 周围点 $\mathbf q$ 是指 $(i-1,j),(i+1,j),(i,j-1),(i,j+1)$
 3. 求解方程 `sparse_mat` * `x`=`vec`, where `x(index(i,j)) = u(i,j)`.
 
