@@ -45,7 +45,7 @@ $$
 
 #### Numerical Equation
 
-为了进行数值上的求解，则要对 $\Delta f$ 离散化处理，处理方式利用有限差分的形式，设像素点步长为 $h=1$ 对于 $S$区域内任意点 $\bold p=(i,j)$来说，该点对应 $f$ 值记作 $f_p$，那么有
+为了进行数值上的求解，则要对 $\Delta f$ 离散化处理，处理方式利用有限差分的形式，设像素点步长为 $h=1$ 对于 $S$区域内任意点 $\mathbf p=(i,j)$来说，该点对应 $f$ 值记作 $f_p$，那么有
 
 $$
 \Delta f(\mathbf p)\approx\frac{4f(i,j)-f(i+1,j)-f(i-1,j)-f(i,j+1)-f(i,j-1)}{4h^2}\tag4
@@ -82,8 +82,8 @@ $$
 1. 遍历区域 S 内的像素点（i,j）
 2. 如果 $(i,j)\in\Omega\backslash\partial\Omega$，设`index(i,j) = sub2ind(i,j)`
    - `sparse_mat[index(i,j)][index(i,j)]= 4`
-   - 如果 $(i,j)$周围的点 $\bold q\in \Omega\backslash\partial\Omega$,那么 `sparse_mat[index(i,j)][index(q)]=-1`
-   - 如果 $(i,j)$周围的点 $\bold q\in \partial\Omega$,那么 `vec[index(q)]=`$\varphi$`[index(q)]`
+   - 如果 $(i,j)$周围的点 $\mathbf q\in \Omega\backslash\partial\Omega$,那么 `sparse_mat[index(i,j)][index(q)]=-1`
+   - 如果 $(i,j)$周围的点 $\mathbf q\in \partial\Omega$,那么 `vec[index(q)]=`$\varphi$`[index(q)]`
    - 周围点 $\mathbf q$ 是指 $(i-1,j),(i+1,j),(i,j-1),(i,j+1)$
 3. 求解方程 `sparse_mat` * `x`=`vec`, where `x(index(i,j)) = u(i,j)`.
 
