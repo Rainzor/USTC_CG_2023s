@@ -12,7 +12,7 @@ There are 10 projects here:
 3. [Poisson Editing](03_poisson_editing)
 4. [Seam Carving](./04_seam_carving)
 5. [Parameterization](./05_parameterization)
-6. [Laplace Editing](./06_laplace_mesh)
+6. [Laplace Editing](./06_laplacian_mesh)
 7. [ARAP Interpolation](./07_ARAP_Interpolation)
 8. [Bezier Curve](./08_bézier_burve)
 9. [Texture Mapping](./09_texture_mapping)
