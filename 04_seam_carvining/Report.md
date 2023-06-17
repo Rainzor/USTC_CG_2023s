@@ -121,6 +121,7 @@ $$
     </div>
     <p> </p>
 </div>
+
 > 该图像是利用 Salience 文件夹中的代码生成的
 
 ### 2.2 Find Path
@@ -226,7 +227,7 @@ increaseWidth(new_width)
 
 ​	伪代码中对原始的显著能量图进行了修改，增加 $energy(i,j)$的值使得其变得不再显著，保证在下次选择路径时可以选到别的路。
 
-> **注：**之所以不采取直接根据 $M(i,j)$ 图来选择其他路径，是因为路径可能存在交叉现象，这样会导致在调整图像时，不利于图像扩增,像素位置错乱。
+> **注**:之所以不采取直接根据 $M(i,j)$ 图来选择其他路径，是因为路径可能存在交叉现象，这样会导致在调整图像时，不利于图像扩增,像素位置错乱。
 
 ​	扩增后图像如下：
 <div align=center>
@@ -385,7 +386,7 @@ increaseWidth(increase);
                 border-radius: 0.3125em;
                 box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
                	src="./img/500_374_good.png"
-               	width = "85%"
+               	width = "40%"
                 alt="Given img">
             <span style="margin-top: 5px; font-size: 14px;"><b>Given img</b></span>
         </div>
@@ -394,7 +395,7 @@ increaseWidth(increase);
                 border-radius: 0.3125em;
                 box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
                	src="./img/500_374_L1.png"
-               	width = "85%"
+               	width = "40%"
                 alt="L1 Norm">
             <span style="margin-top: 5px; font-size: 14px;"><b>L1 Norm</b></span>
         </div>
@@ -403,7 +404,7 @@ increaseWidth(increase);
                 border-radius: 0.3125em;
                 box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
                	src="./img/500_374_LG.png"
-               	width = "85%"
+               	width = "40%"
                 alt="Local Global">
             <span style="margin-top: 5px; font-size: 14px;"><b>Local Global</b></span>
         </div>
