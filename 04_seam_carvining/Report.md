@@ -27,6 +27,7 @@
     </div>
     <p> </p>
 </div>
+
 ### 2.1 Energy Image
 
 #### Ideal situation
@@ -56,10 +57,13 @@
 #### L1 Norm
 
 ​	按照文章[<sup>[1]</sup>](#refer-anchor-1) 所述，可以定义以图像梯度为度量的显著度，即
+
 $$
 e_1(\mathbf I)=|\frac\partial{\partial x}\mathbf I|+|\frac\partial{\partial y}\mathbf I|\tag1
 $$
+
 ​	其中 $\mathbf I$ 是指图像中一点 $(i,j)$ 处的像素值，按照 $L_1$ 范数定义的显著度，可以得到以下图像
+
 <div align=center>
     <img style = "
         border-radius: 0.3125em;
@@ -79,21 +83,25 @@ $$
 </div>
 
 >
-> 实现细节在代码 **“MyImage.h” **的`void saliencyL1Init()`中
+> 实现细节在代码 **“MyImage.h”**的`void saliencyL1Init()`中
 >
 
 #### Local-global single-scale saliency
 
 ​	此外，根据文章[<sup>[2]</sup>](#refer-anchor-2)，也可以按照每个像素点周围的补丁(patch)，来定义像素之间的差异，即
+
 $$
 d(p_i,p_j)=\frac{d_{color}(p_i,p_j)}{1+c\cdot d_{position}(p_i,p_j)}\tag2
 $$
-​	其中patch是指像素周围的点在中心点的像素平均，$c=3$, $d_{color}$是 **CIE** 色域的像素欧式距离，$d_{positionn}$ 是patch之间的欧式距离，其被图像的长边归一化。
+
+​	其中patch是指像素周围的点在中心点的像素平均, $c=3$ , $d_{color}$ 是 **CIE** 色域的像素欧式距离, $d_{positionn}$ 是patch之间的欧式距离，其被图像的长边归一化。
 
 ​	按照 eq(2) 的定义，可以得到每点之间的差异值，为了度量图像显著度，采取的策略是：对像素点 $i$ ，找到图像中前 $K=64$ 小的差异值 $d(p_i,p_j)$，如果前K小的差异值都足够大，那么则认为该像素点足够显著，不应该被修改。此时显著度定义为：
+
 $$
 e_i^r=1-\exp\{-\frac1K\sum_{k=1}^{K}d(p_i^r,q_k^r)\}\tag3
 $$
+
 ​	其中 r 是用来标识patch的大小，根据此定义得到下图
 
 <div align=center>
@@ -118,17 +126,23 @@ $$
 ### 2.2 Find Path
 
 ​	在给定了显著图像后，要找到一条显著度（能量）最小的路径，即
+
 $$
 s^* = \min_{\mathbf s} E(\mathbf s)=\min_{\mathbf s}\sum_i^n e(\mathbf I(s_i))\tag4
 $$
+
 其中 $\mathbf s$ 是一条路径，如果对于竖直路径，则有
+
 $$
 \mathbf s^{\mathbf x} = \{s_i^x\}_{i=1}^n=\{(x(i),i)\}\qquad s.t. \forall i,|x(i)-x(i-1)|\le1
 $$
+
 水平路径同理。以竖直路径为例，依照 eq(4) 可以利用**动态规划**的方法寻找路径，即
+
 $$
 M(i,j) = e(i,j)+\min\{M(i-1,j-1),M(i-1,j),M(i-1,j+1)\}
 $$
+
 其中 $M(i,j)$是从顶端某点到 $(i,j)$ 处的路径能量累计总和，在进行动态规划时要辅助记录每次路径选择的横坐标。
 
 ​	当 $j=n$ 时，从 $M(\cdot,n)$中找到能量最小的横坐标，然后回溯路径即可找到能量最小路径，路径结果如 图(1) 所示
