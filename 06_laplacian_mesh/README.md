@@ -227,8 +227,15 @@ $$
 
 how to use this code:
 1. make sure that the current path in Matlab points to this folder
-2. build the glvu.sln project. Run or debug from visual studio
+2. build the glvu_matlab.sln project. Run or debug from visual studio
 3. if you don't register COM in MATLAB, you can follow the steps below:
+
+```MATLAB
+%comserver register % make sure Matlab is registered in Windows Registry
+enableservice('AutomationServer', true)   % so that the current Matlab session can accept engine connection
+% start the C++ program in the glu_matlab.exe folder
+!start glvu_matlab.exe  
+```
 
 <div align="center">
     <img src="./img/register.jpg" width="80%">
