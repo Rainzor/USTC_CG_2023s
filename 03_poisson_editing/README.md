@@ -6,7 +6,7 @@
 
 基于泊松方程的图像融合，并实现实时用户交互
 
-​	实现图形融合指：设映射函数 $f:(x,y)\rightarrow(R,G,B)$，那么如下图所示, $f$ 是定义域在 $\Omega$处的待融合图像, $f^*=f_b$是定义域为 $S$ 的背景图（background）, $g_f$ 是原来的原始图像(foreground)， 要解决的问题是让二者能自然的融合。
+​	实现图形融合指：设映射函数 $f:(x,y)\rightarrow(R,G,B)$，那么如下图所示, $f$ 是定义域在 $\Omega$处的待融合图像, $f^*=f_B$是定义域为 $S$ 的背景图（background）, $f_F$ 是原来的原始图像(foreground)， 要解决的问题是让二者能自然的融合。
 
 ​	所谓自然融合，就是在保持原图像内部梯度(最小化新图与原图的梯度差异)的前提下，让粘贴后图像的边界值与新的背景图相同，以实现无缝粘贴的效果。
 
@@ -20,27 +20,27 @@
 
 #### Mathematical Formation
 
-​	从数学上讲，对于嵌入新背景待求的新图像 $f(x,y)$，背景图形为 $f_b(x,y)$和前景图像为 $g_f(x,y)$ ，而要解决的问题等价于解最优化问题：
+​	从数学上讲，对于嵌入新背景待求的新图像 $f(x,y)$，背景图形为 $f_B(x,y)$和前景图像为 $f_F(x,y)$ ，而要解决的问题等价于解最优化问题：
 
 $$
-\min\limits_f \iint_\Omega \vert\nabla f-\nabla g_f \vert^2 \quad \mathrm{with} f\vert_{\partial \Omega}=f_b\vert_{\partial \Omega}\tag1
+\min\limits_f \iint_\Omega \vert\nabla f-\nabla f_F \vert^2 \quad \mathrm{with} f\vert_{\partial \Omega}=f_B\vert_{\partial \Omega}\tag1
 $$
 
 ​	利用变分法通过 Euler-Lagrange equation 可转化为具有Dirichlet边界条件的Poisson方程：
 
 $$
-\Delta f= \Delta  g_f\ \mathrm{over}\ \Omega \quad \mathrm{with} f\vert_{\partial \Omega}=f_b\vert_{\partial \Omega}
+\Delta f= \Delta  f_F\ \mathrm{over}\ \Omega \quad \mathrm{with} f\vert_{\partial \Omega}=f_B\vert_{\partial \Omega}
 \tag2
 $$
 
-​	如果令 $\widetilde f=f-g_f$, $(f_b-g_f)=\varphi$那么该问题就可以转换成求解 Laplace 方程的边界问题：
+​	如果令 $\widetilde f=f-f_F$, $(f_B-f_F)=\varphi$那么该问题就可以转换成求解 Laplace 方程的边界问题：
 
 $$
 \Delta \widetilde f= 0\ \mathrm{over}\ \Omega \quad
 \mathrm{with}\widetilde f\vert_{\partial \Omega}=(f^*-g)\vert_{\partial \Omega}=\varphi|_{\partial \Omega}\tag3
 $$
 
-这里的 $f_b, g_f, \varphi$都是已知的条件，而 $\widetilde f$ 是待求解的函数。
+这里的 $f_B, f_F, \varphi$都是已知的条件，而 $\widetilde f$ 是待求解的函数。
 
 #### Numerical Equation
 
@@ -89,10 +89,10 @@ $$
 最终解得 $\widetilde f_{ij}=u_{ij}$，得到最终图像的像素值为：
 
 $$
-f(i,j)=\widetilde f(i,j)+g_f(i,j)
+f(i,j)=\widetilde f(i,j)+f_F(i,j)
 $$
 
-其中 $g_f(i,j)$ 为原来的前景图像的像素值，$\widetilde f(i,j)$ 为刚求解得到的值。
+其中 $f_F(i,j)$ 为原来的前景图像的像素值，$\widetilde f(i,j)$ 为刚求解得到的值。
 
 ### 2.2 Boundary and Domain
 
