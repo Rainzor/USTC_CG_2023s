@@ -83,7 +83,7 @@ $$
 </div>
 
 >
-> 实现细节在代码 **“MyImage.h”**的`void saliencyL1Init()`中
+> 实现细节在代码 **MyImage.h** 的`void saliencyL1Init()`中
 >
 
 #### Local-global single-scale saliency
@@ -410,7 +410,7 @@ increaseWidth(increase);
 
 ## 6 Appendix
 
-本次实验，在已给框架中修改添加了一下函数
+本次实验，在已给框架中修改添加了以下函数
 
 #### main.cpp
 
