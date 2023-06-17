@@ -8,7 +8,7 @@ There are 10 projects here:
 
 1. [Matrix Class](./01_matrix_class)
 
-2. [Image Warping](./02_Image_warping)
+2. [Image Warping](./02_image_warping)
 3. [Poisson Editing](03_poisson_editing)
 4. [Seam Carving](./04_seam_carving)
 5. [Parameterization](./05_parameterization)
