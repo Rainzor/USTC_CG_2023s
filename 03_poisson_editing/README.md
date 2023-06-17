@@ -23,23 +23,21 @@
 ​	从数学上讲，对于嵌入新背景待求的新图像 $f(x,y)$，背景图形为 $f_b(x,y)$和前景图像为 $g_f(x,y)$ ，而要解决的问题等价于解最优化问题：
 
 $$
-\min\limits_f \iint _\Omega |\nabla f-\nabla g_f |^2 \\ \mathrm{with}\ f|_{\partial \Omega}=f_b|_{\partial \Omega}
-\tag1
+\min\limits_f \iint _\Omega |\nabla f-\nabla g_f |^2 \quad \mathrm{with}\ f|_{\partial \Omega}=f_b|_{\partial \Omega}\tag1
 $$
 
 ​	利用变分法通过 Euler-Lagrange equation 可转化为具有Dirichlet边界条件的Poisson方程：
 
 $$
-\Delta f= \Delta  g_f\ \mathrm{over}\ \Omega \\ \mathrm{with}\ f|_{\partial \Omega}=f_b|_{\partial \Omega}
+\Delta f= \Delta  g_f\ \mathrm{over}\ \Omega \quad \mathrm{with}\ f|_{\partial \Omega}=f_b|_{\partial \Omega}
 \tag2
 $$
 
-​	如果令 $\widetilde f=f-g_f$，$(f_b-g_f)=\varphi$那么该问题就可以转换成求解 Laplace 方程的边界问题：
+​	如果令 $\widetilde f=f-g_f$, $(f_b-g_f)=\varphi$那么该问题就可以转换成求解 Laplace 方程的边界问题：
 
 $$
-\Delta \widetilde f= 0\ \mathrm{over}\ \Omega \\ 
-\mathrm{with}\widetilde f|_{\partial \Omega}=(f^*-g)|_{\partial \Omega}=\varphi|_{\partial \Omega}
-\tag3
+\Delta \widetilde f= 0\ \mathrm{over}\ \Omega \quad
+\mathrm{with}\widetilde f|_{\partial \Omega}=(f^*-g)|_{\partial \Omega}=\varphi|_{\partial \Omega}\tag3
 $$
 
 这里的 $f_b, g_f, \varphi$都是已知的条件，而 $\widetilde f$ 是待求解的函数。
@@ -52,7 +50,7 @@ $$
 \Delta f(\mathbf p)\approx\frac{4f(i,j)-f(i+1,j)-f(i-1,j)-f(i,j+1)-f(i,j-1)}{4h^2}\tag4
 $$
 
-​	为了表达式的简单，定义 $N_p$ 为 $S$ 中的每一个像素 $p$四个方向连接邻域，令 $\left<p,q \right>$ 为满足 $q\in N_p$ 的像素对，即 $q\in\{(i+1,j),(i-1,j),(i,j+1),(i,j-1)\}$，则可以得到数值方程解法
+​	为了表达式的简单，定义 $N_p$ 为 $S$ 中的每一个像素 $p$四个方向连接邻域，令 $\left< p,q \right>$ 为满足 $q\in N_p$ 的像素对，即 $q\in\{(i+1,j),(i-1,j),(i,j+1),(i,j-1)\}$，则可以得到数值方程解法
 
 $$
 \begin{equation}
