@@ -18,7 +18,7 @@ $$
 \pmb{f}(\pmb{x})=\sum _ {i=1}^n \boldsymbol{\alpha} _ i R_i(\mathbf{x})+A\mathbf{x}+\mathbf{b}\tag1
 $$
 
-其中权重系数 $\boldsymbol{\alpha} _ i\in\mathbb{R}^{2}$，$A\in\mathbb{R}^{2\times 2}$，$\mathbf{b}\in\mathbb{R}^2$，径向基函数
+其中权重系数 $\boldsymbol{\alpha} _ i\in\mathbb{R}^{2}$, $A\in\mathbb{R}^{2\times 2}$, $\mathbf{b}\in\mathbb{R}^2$，径向基函数
 
 $$
 R_i(\mathbf{x})=\frac{1}{|\mathbf{x-p_i}|^2+d_i}\tag2
@@ -32,7 +32,7 @@ $$
 \mathbf{f}(\mathbf{p} _ j)=\sum _ {i=1}^n\boldsymbol{\alpha} _ i R_i(\mathbf{p} _ j)+A\mathbf{p} _ j+\mathbf{b}=\mathbf{q} _ j,\quad j=1,\dots n\tag3
 $$
 
-上述方程有 $2n+6$ 个自由度，其中 $ \boldsymbol{\alpha} _ i=(\alpha _ i^{(1)},\alpha _  i^{(2)})^T $，按照论文可选的补充约束为
+上述方程有 $2n+6$ 个自由度，其中 $\boldsymbol{\alpha} _ i=(\alpha _ i^{(1)} , \alpha _  i^{(2)})^T $，按照论文可选的补充约束为
 
 $$
 A=I,\mathbf{b}=\mathbf{0}\tag4
@@ -41,7 +41,7 @@ $$
 ​	所以关于 $\boldsymbol\alpha$ 的方程是
 
 $$
-\bold R \boldsymbol\alpha=\bold q-\bold p\tag5
+\boldsymbol R \boldsymbol\alpha=\boldsymbol q-\boldsymbol p\tag5
 $$
 
 ​	以上线性方程组可以解出权重系数 $\boldsymbol\alpha$，此时根据 $\boldsymbol\alpha$ 的值，结合 *eq(4)* 代入 *eq(1)* 即可得到图像中任意点  $\mathbf{x}$ 经过变换后的坐标 $\pmb{f}(\pmb{x})$
@@ -164,7 +164,7 @@ $$
 $$
 \begin{aligned}
 R_i(\mathbf{x})&=\frac{1}{|\mathbf{x-q_i}|^2+d_i}\\
-\bold R \boldsymbol\alpha&=\mathbf p-\mathbf q\\
+\boldsymbol R \boldsymbol\alpha&=\mathbf p-\mathbf q\\
 \pmb{f}(\pmb{x})&=\sum _ {i=1}^n \boldsymbol{\alpha} _ i R_i(\mathbf{x})+\pmb{x}
 \end{aligned}\tag8
 $$
