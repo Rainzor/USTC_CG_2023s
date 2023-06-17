@@ -113,7 +113,7 @@ $$
 那么其他的点要进移动变化，变化到 $\mathbf y$。在变换过程中要尽量满足 $\boldsymbol \delta$ 不变，且接近目标位置 $y^{(k_i)}= z^{(k_i)}$ ,即有下式，其中 $\lambda$为软约束系数，本实验设置为 $10^5$
 
 $$
-\min \left\{ \sum_i||\delta_i-Ly_{i}||^2+\lambda\sum_k||y_k-z_k||^2  \right\}
+\min \left\lbrace \sum_i||\delta_i-Ly_{i}||^2+\lambda\sum_k||y_k-z_k||^2  \right \rbrace
 $$
 
 这可以等价的约束为求解线性方程组
@@ -231,6 +231,6 @@ how to use this code:
 3. if you don't register COM in MATLAB, you can follow the steps below:
 
 <div align="center">
-    <img src="./img/register.png" width="50%">
+    <img src="./img/register.jpg" width="80%">
     <p> </p>
 </div>
