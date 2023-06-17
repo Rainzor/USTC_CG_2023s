@@ -23,13 +23,13 @@
 ​	从数学上讲，对于嵌入新背景待求的新图像 $f(x,y)$，背景图形为 $f_b(x,y)$和前景图像为 $g_f(x,y)$ ，而要解决的问题等价于解最优化问题：
 
 $$
-\min\limits_f \iint _\Omega |\nabla f-\nabla g_f |^2 \quad \mathrm{with} f|_{\partial \Omega}=f_b|_{\partial \Omega}\tag1
+\min\limits_f \iint _\Omega \vert\nabla f-\nabla g_f \vert^2 \quad \mathrm{with} f\vert_{\partial \Omega}=f_b\vert_{\partial \Omega}\tag1
 $$
 
 ​	利用变分法通过 Euler-Lagrange equation 可转化为具有Dirichlet边界条件的Poisson方程：
 
 $$
-\Delta f= \Delta  g_f\ \mathrm{over}\ \Omega \quad \mathrm{with} f|_{\partial \Omega}=f_b|_{\partial \Omega}
+\Delta f= \Delta  g_f\ \mathrm{over}\ \Omega \quad \mathrm{with} f\vert_{\partial \Omega}=f_b\vert_{\partial \Omega}
 \tag2
 $$
 
