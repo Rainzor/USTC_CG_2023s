@@ -1,7 +1,5 @@
 # Report
 
-> PB20020480 王润泽 47
->
 > Seam Carving
 
 ## 1. Assignment
@@ -12,7 +10,7 @@
 
 ​	为了在缩放图像时，实现内容感知，要做的是从图像中找到一条恰当的路径去增减图像以保证不破坏图像中重要的区域而对不重要的地方进行增减，如下图所示
 
-<center>
+<div align=center>
     <img style = "
         border-radius: 0.3125em;
         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
@@ -28,14 +26,14 @@
         Figure 1:Path
     </div>
     <p> </p>
-</center>
+</div>
 ### 2.1 Energy Image
 
 #### Ideal situation
 
 ​	为了获取路径，首先必须区分如何图像中哪个区域为重要的要不能修改的，哪个区域不是显著的是可以修改的。在理想情况下，应该尽可能的保持人物脸部不变，所以有下图
 
-<center>
+<div align=center>
     <img style = "
         border-radius: 0.3125em;
         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
@@ -51,7 +49,7 @@
         Figure 2: Given Sailence
     </div>
     <p> </p>
-</center>
+</div>
 
 ​	按照上图所示，灰度值越大则越显著重要，不应该被修改
 
@@ -62,7 +60,7 @@ $$
 e_1(\mathbf I)=|\frac\partial{\partial x}\mathbf I|+|\frac\partial{\partial y}\mathbf I|\tag1
 $$
 ​	其中 $\mathbf I$ 是指图像中一点 $(i,j)$ 处的像素值，按照 $L_1$ 范数定义的显著度，可以得到以下图像
-<center>
+<div align=center>
     <img style = "
         border-radius: 0.3125em;
         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
@@ -78,7 +76,7 @@ $$
         Figure 3: L1 Norm Sailence
     </div>
     <p> </p>
-</center>
+</div>
 
 >
 > 实现细节在代码 **“MyImage.h” **的`void saliencyL1Init()`中
@@ -98,7 +96,7 @@ e_i^r=1-\exp\{-\frac1K\sum_{k=1}^{K}d(p_i^r,q_k^r)\}\tag3
 $$
 ​	其中 r 是用来标识patch的大小，根据此定义得到下图
 
-<center>
+<div align=center>
     <img style = "
         border-radius: 0.3125em;
         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
@@ -114,7 +112,7 @@ $$
         Figure 4: Local-Gobal Sailence
     </div>
     <p> </p>
-</center>
+</div>
 > 该图像是利用 Salience 文件夹中的代码生成的
 
 ### 2.2 Find Path
@@ -155,7 +153,7 @@ decreaseWidth(new_width)
 ```
 
 这种方式会使得每次缩小图像都在相同的不显著区域，不会影响到图像主体。结果如下
-<center>
+<div align=center>
     <img style = "
         border-radius: 0.3125em;
         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
@@ -176,12 +174,12 @@ decreaseWidth(new_width)
         Figure 5: left,orign 500 &times; 324; right,400&times;324
     </div>
     <p> </p>
-</center>
+</div>
 
 #### Enlarge image size
 
 假设只调整图像宽度，如果任然按照缩小图像的思路来扩增图像，那么会造成每次都在相同路径处扩增图像，导致重影现象
-<center>
+<div align=center>
     <img style = "
         border-radius: 0.3125em;
         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
@@ -197,7 +195,7 @@ decreaseWidth(new_width)
         Figure 6: Shadow 600&times;324
     </div>
     <p> </p>
-</center>
+</div>
 
 ​	为了解决这个问题，扩增图像的思路k可以按照文章[<sup>[1]</sup>](#refer-anchor-1) 给出的方式：在原始图像中找到 $k= m'-m$ 条 路径，这些路径能量是前 $k$ 小的，这样就避免了只在相同路径处反复复制导致重影，伪代码如下
 
@@ -217,7 +215,7 @@ increaseWidth(new_width)
 > **注：**之所以不采取直接根据 $M(i,j)$ 图来选择其他路径，是因为路径可能存在交叉现象，这样会导致在调整图像时，不利于图像扩增,像素位置错乱。
 
 ​	扩增后图像如下：
-<center>
+<div align=center>
     <img style = "
         border-radius: 0.3125em;
         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
@@ -238,7 +236,7 @@ increaseWidth(new_width)
         Figure 7: left,orign 500 &times; 324; right,600&times;324
     </div>
     <p> </p>
-</center>
+</div>
 
 ​	在实际代码中，为了防止因图像扩增过大而导致所有路径都复制一遍，那么这与简单的图形扩增没有区别，不符合我们对显著区域保护的要求，所以实际操作时可以根据新宽度 $m'$ 的大小来采取分段扩增图形的思路：
 
@@ -252,7 +250,7 @@ increaseWidth(increase);
 ```
 
 得到图形如下：
-<center>
+<div align=center>
     <img style = "
         border-radius: 0.3125em;
         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
@@ -268,7 +266,7 @@ increaseWidth(increase);
         Figure 8:1000&times;324
     </div>
     <p> </p>
-</center>
+</div>
 
 ## 3 Result
 
@@ -276,7 +274,7 @@ increaseWidth(increase);
 
 对图像进行同比例的扩大或缩小后，得到下图
 
-<center>
+<div align=center>
     <div style="display: flex; justify-content: space-between; align-items: center;">
         <div style="display: flex; flex-direction: column; align-items: center; margin-right: 20px;">
             <img style = "
@@ -316,7 +314,7 @@ increaseWidth(increase);
         Figure 9: Result
     </div>
     <p> </p>
-</center>
+</div>
 
 ### 3.2 显著图对比
 
@@ -324,7 +322,7 @@ increaseWidth(increase);
 
 <div STYLE="page-break-after: always;"></div>
 
-<center>
+<div align=center>
     <div style="display: flex; justify-content: space-between; align-items: center;">
         <div style="display: flex; flex-direction: column; align-items: center; margin-right: 20px;">
             <img style = "
@@ -364,9 +362,9 @@ increaseWidth(increase);
         Figure 10: Shrink Width 400&times;324
     </div>
     <p> </p>
-</center>
+</div>
 
-<center>
+<div align=center>
     <div style="display: flex; justify-content: space-between; align-items: center;">
         <div style="display: flex; flex-direction: column; align-items: center; margin-right: 20px;">
             <img style = "
@@ -406,9 +404,9 @@ increaseWidth(increase);
         Figure 11: Enlarge Height 500&times;374
     </div>
     <p> </p>
-</center>
+</div>
 
-<center>
+<div align=center>
     <div style="display: flex; justify-content: space-between; align-items: center;">
         <div style="display: flex; flex-direction: column; align-items: center; margin-right: 20px;">
             <img style = "
@@ -448,7 +446,7 @@ increaseWidth(increase);
         Figure 12: Enlarge Width 600&times;324
     </div>
     <p> </p>
-</center>
+</div>
 
 - Given Map 的结果中的人物的脸的变形程度最小，这是因为在能量图中给人物的脸赋予了很高的能量，而 其它两种算法中人脸处的能量都是很低的。
 - L1 Norm 的结果也对人物的脸进行了一定程度的保持，它的好处在于可以不用依赖于给定的能量图，也可以取得较好的效果。
@@ -458,7 +456,7 @@ increaseWidth(increase);
 
 ### 3.3 GUI
 
-<center>
+<div align=center>
     <img style = "
         border-radius: 0.3125em;
         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
@@ -474,7 +472,7 @@ increaseWidth(increase);
         Figure 13:GUI
     </div>
     <p> </p>
-</center>
+</div>
 
 
 ​	实验中调整了GUI设计，添加了控件，可以显示图像路径和选择三类显著图的方法操作
