@@ -1,6 +1,4 @@
-# Report
-
-> Seam Carving
+# Seam Carving
 
 ## 1. Assignment
 

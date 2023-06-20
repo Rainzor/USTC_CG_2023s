@@ -1,4 +1,4 @@
-# Report
+# Parameterization
 
 > Environment: MATLAB 2023a
 
@@ -74,7 +74,7 @@ $$
 ### 2.2 离散保角映射 [<sup>[2]</sup>](#refer-anchor-2)
 
 ​	简单的映射没有充分用到源图的信息，Matthias Eck 等人提出的离散保角映射法，对把第 $i$ 个源图点 $v_i$ 映到平面点 $h(v_i)=u_i$ 的映射 h，取其能量函数为:
- 
+
 $$
 E=\sum_{(i,j)\in edges}\frac12\kappa_{ij}\Vert u_i-u_j \Vert^2\tag4
 $$

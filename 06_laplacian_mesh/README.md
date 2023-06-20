@@ -1,7 +1,5 @@
-# Report
+# Laplacian mesh editing
 
-> Laplacian mesh editing
->
 > Environment: C++, MATLAB2023R, Windows 11
 
 ## 1. Assignment
