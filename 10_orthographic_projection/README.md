@@ -1,16 +1,12 @@
-# Report
+# Projection
 
-> Projection 投影
->
-> 王润泽
->
 > Environment: Windows11, Visual Studio 2022, MATLAB R2023a
 
 ## 1. Assignment
 
 实现平行投影。
 
-在作业9的框架下进行修改，将三维投影由透视投影改为平行投影。
+在 [Texture Mapping](../09_texture_mapping) 的框架下进行修改，将三维投影由透视投影改为平行投影。
 
 ## 2. Principle
 
@@ -22,7 +18,7 @@
 
 
 
-<center>
+<div align="center">
     <img style = "
         border-radius: 0.3125em;
         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
@@ -38,22 +34,25 @@
         Figure 1. Frustum
     </div>
     <p> </p>
-</center>
+</div>
 
 ### 正交投影
 
 正射投影矩阵定义了一个类似立方体的平截头体，它定义了一个裁剪空间，在这空间之外的顶点都会被裁剪掉。创建一个正射投影矩阵需要指定可见平截头体的宽、高和长度。上面的平截头体定义了可见的坐标，它由由宽、高、近(Near)平面和远(Far)平面所指定。任何出现在近平面之前或远平面之后的坐标都会被裁剪掉。
 
 正交投影矩阵写作
+
 $$
 M_{orth}=\begin{pmatrix}
 \frac{2}{r-l}&0&0&-\frac{r+l}{r-l}\\
-0&\frac{2}{t-b}&0&\frac{t+b}{t-b}\\
+0&\frac{2}{t-b}&0&-\frac{t+b}{t-b}\\
 0&0&\frac2{n-f}&-\frac{n+f}{n-f}\\
 0&0&0&1
 \end{pmatrix}
 $$
+
 如果平截头体是对称的，即有
+
 $$
 \theta=fovy*\frac{\pi}{180^{\circ}}\\
 r=-l=aspect*\tan(\theta/2)*Near\\
@@ -61,7 +60,9 @@ t=-b=\tan(\theta/2)*Near\\
 n = Near\\
 f = Far
 $$
+
 那么上面的方程可以简化为
+
 $$
 M_{orth}=\begin{pmatrix}
 \frac{1}{r}&0&0&0\\
@@ -74,6 +75,7 @@ $$
 ## 透视投影
 
 这个投影矩阵将给定的平截头体范围映射到裁剪空间，除此之外还修改了每个顶点坐标的w值，从而使得离观察者越远的顶点坐标w分量越大。所以存在一个透视变化的矩阵
+
 $$
 P=\begin{pmatrix}
 n&0&0&0\\
@@ -82,7 +84,9 @@ n&0&0&0\\
 0&0&1&0
 \end{pmatrix}
 $$
+
 那么透视投影矩阵是
+
 $$
 M_{pers}=M_{orth}P=\begin{pmatrix}
 \frac{2n}{r-l}&0&\frac{r+l}{r-l}&0\\
@@ -91,7 +95,9 @@ M_{pers}=M_{orth}P=\begin{pmatrix}
 0&0&-1&0
 \end{pmatrix}
 $$
+
 在化简后则为
+
 $$
 M_{pers}=\begin{pmatrix}
 \frac{n}{r}&0&0&0\\
@@ -126,7 +132,7 @@ Eigen::Matrix4f orthographic(float fovy, float aspect, float zNear, float zFar) 
 
 作为正交投影矩阵，并且修改了代码框架，能够方便用户切换不同的投影模式
 
-<center>
+<div align="center">
     <img style = "
         border-radius: 0.3125em;
         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
@@ -142,13 +148,13 @@ Eigen::Matrix4f orthographic(float fovy, float aspect, float zNear, float zFar) 
         Figure 2. Framework
     </div>
     <p> </p>
-</center>
+</div>
 
 ## 4. Result
 
 通过相同的几何体对比可以看到正交投影和透视投影的区别
 
-<center>
+<div align="center">
     <img style = "
         border-radius: 0.3125em;
         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
@@ -169,13 +175,13 @@ Eigen::Matrix4f orthographic(float fovy, float aspect, float zNear, float zFar) 
         Figure 3. Left: Orthographic;Right:Perspective
     </div>
     <p> </p>
-</center>
+</div>
 
 可以看到正交投影保持了平行和边长的一致性，而透视投影符合近大远小的特点
 
 下面的球体图也能展示这样的结果
 
-<center>
+<div align="center">
     <img style = "
         border-radius: 0.3125em;
         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
@@ -196,5 +202,4 @@ Eigen::Matrix4f orthographic(float fovy, float aspect, float zNear, float zFar) 
         Figure 4.Balls, Left: Orthographic;Right:Perspective
     </div>
     <p> </p>
-</center>
-
+</div>
