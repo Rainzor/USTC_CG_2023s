@@ -54,11 +54,13 @@ $$
 如果平截头体是对称的，即有
 
 $$
-\theta=fovy*\frac{\pi}{180^{\circ}}\\
-r=-l=aspect*\tan(\theta/2)*Near\\
-t=-b=\tan(\theta/2)*Near\\
-n = Near\\
-f = Far
+\begin{aligned}
+&\theta=fovy*\frac{\pi}{180^{\circ}}\\
+&r=-l=aspect*\tan(\theta/2)*Near\\
+&t=-b=\tan(\theta/2)*Near\\
+&n = Near\\
+&f = Far
+\end{aligned}
 $$
 
 那么上面的方程可以简化为
@@ -203,3 +205,6 @@ Eigen::Matrix4f orthographic(float fovy, float aspect, float zNear, float zFar) 
     </div>
     <p> </p>
 </div>
+## 5. Reference
+
+- [gl_projectionmatrix](http://www.songho.ca/opengl/gl_projectionmatrix.html)
