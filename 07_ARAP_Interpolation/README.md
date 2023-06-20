@@ -155,13 +155,13 @@ end
 ##### 旋转不一致的ARAP插值
 
 <div align="center">
-<img src="./img/ARAP.gif" style="width: 33%;" />
+<img src="./img/ARAP.gif" style="width: 60%;" />
 </div>
 
 ##### 旋转一致性的ARAP插值
 
 <div align="center">
-<img src="./img/ARAP_Rotation_Consist.gif" style="width:33%;" />
+<img src="./img/ARAP_Rotation_Consist.gif" style="width:60%;" />
 </div>
 
 ## 5. Summary
