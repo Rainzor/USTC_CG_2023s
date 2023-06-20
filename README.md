@@ -1,6 +1,6 @@
 # Computer Graphics
 
-Here is my homework codes git in USTC Computer Graphics course in 2023 Spring. 
+Here are my homework codes git in USTC Computer Graphics course in 2023 Spring. 
 
 - Teacher: [Prof. Dr. Renjie Chen](http://staff.ustc.edu.cn/~renjiec)
 
