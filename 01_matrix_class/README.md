@@ -67,10 +67,29 @@
 
 #### 2.1.3 程序输出
 
-<center class="half">
-<img src=".\img\dense_mat.png" style="zoom:50%;" />
-<img src=".\img\dense_op.png"style="zoom:35%;" />
-<center><p> 图1：稠密矩阵基本输出
+<div align=center>
+    <img style = "
+        border-radius: 0.3125em;
+        box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+       	src="./img/dense_mat.png"
+        width = "35%">
+    <img style = "
+        border-radius: 0.3125em;
+        box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+       	src="./img/dense_op.png"
+        width = "30%">
+    <br>
+    <div style = "
+        color: orange;
+        border-bottom: 1px solid #d9d9d9;
+        display: inline-block;
+        color: #999;
+        padding: 2px;">
+        Figure 1. 稠密矩阵基本输出
+    </div>
+    <p> </p>
+</div>
+
 
 #### 2.1.4 程序健壮性
 
@@ -147,19 +166,43 @@ struct Triplet {
 
 #### 2.2.3 程序输出
 
-<center class="half">
-<img src=".\img\A_sp.png"style="zoom:48%;" />
-<img src=".\img\B_sp.png"style="zoom:50%;" />
-<img src=".\img\AxB_sp.png"style="zoom:53%;" />
-<center><p> 图2：稀疏矩阵输出
+<div align=center>
+    <img style = "
+        border-radius: 0.3125em;
+        box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+       	src="./img/A_sp.png"
+        width = "28%">
+    <img style = "
+        border-radius: 0.3125em;
+        box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+       	src="./img/B_sp.png"
+        width = "30%">
+    <img style = "
+        border-radius: 0.3125em;
+        box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+       	src="./img/AxB_sp.png"
+        width = "30%">
+    <br>
+    <div style = "
+        color: orange;
+        border-bottom: 1px solid #d9d9d9;
+        display: inline-block;
+        color: #999;
+        padding: 2px;">
+        Figure 2. 稀疏矩阵输出
+    </div>
+    <p> </p>
+</div>
+
 
 ### 2.3 与Eigen 库比较
 
 ​	简单使用Eigen库的稠密矩阵进行1000x1000乘法比较如下
 
 <div align="center">
-<img src=".\img\result.png"style="width:60%;" />
+<img src=".\img\Result.png"style="width:60%;" />
 </div>
+
 
 ​	由于Eigen库由编译优化操作，同时Eigen库使用了一些高效的矩阵乘法算法，例如基于BLAS和LAPACK的算法，可以充分利用现代CPU的特殊指令集，如SSE和AVX；并且Eigen库的矩阵和向量数据结构采用了特殊的优化，可以使得数据在内存中的存储方式更加紧凑和连续，从而可以更好地利用CPU的缓存。
 
