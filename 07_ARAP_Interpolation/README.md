@@ -7,7 +7,7 @@
 在MATLAB上实现二维 As-Rigid-As-Possible 形状插值算法，实现图像动画的平滑过渡
 
 <div align="center">
-<img src="./img/target.png" style="zoom:60%;" />
+<img src="./img/target.png" style="width:60%;" />
 </div>
 
 ## 2. Method
@@ -20,7 +20,7 @@ $$
 
 ### 2.1 过渡矩阵的构造
 
-以其中一个三角形面元 $t_i$ 为例，在二维网格上，其每个顶点满足 $\bf x\in \R^{2\times1}$ ,假设 $t_i$ 变换前顶点坐标为 $(\bf{x_1},\bf{x_2},\bf{x_3})$, 变换后顶点坐标为 $(\bf{y_1},\bf{y_2},\bf{y_3})$,于是最终的矩阵 $M$ 满足
+以其中一个三角形面元 $t_i$ 为例，在二维网格上，其每个顶点满足 $\bf x\in R^{2\times1}$ ,假设 $t_i$ 变换前顶点坐标为 $(\bf{x_1},\bf{x_2},\bf{x_3})$, 变换后顶点坐标为 $(\bf{y_1},\bf{y_2},\bf{y_3})$,于是最终的矩阵 $M$ 满足
 
 $$
 M\bf [x_1,x_2,x_3]=[y_1,y_2,y_3]
@@ -70,14 +70,14 @@ $$
 
 ### 2.2 最小二乘求解目标
 
-考虑整个图形由 $n$ 个顶点 $V$ 和 $m$ 条边 $E$ 构成，而变换矩阵直接操作的是图形的边，所以需要矩阵来转化，设有一矩阵 $D\in  \R^{m\times n}$,将顶点值 $V$ 转化到边向量 $E$ ，即
+考虑整个图形由 $n$ 个顶点 $V$ 和 $m$ 条边 $E$ 构成，而变换矩阵直接操作的是图形的边，所以需要矩阵来转化，设有一矩阵 $D\in  R^{m\times n}$,将顶点值 $V$ 转化到边向量 $E$ ，即
 $$
 D*V=E
 $$
 那么在对各个边进行变换后会得到如下情况
 
 <div align="center">
-<img src="./img/Per-element-interp.png" style="zoom:50%;" />
+<img src="./img/Per-element-interp.png" style="width:50%;" />
 </div>
 
 为了重新复原出每个顶点的位置，需要进行求解线性通过变换后的 $E(t)$，得到顶点 $V(t)$，而由于 $D$ 矩阵构成的矩阵条件个数超过变量个数，故采取最小二乘法构造
@@ -95,7 +95,7 @@ $$
 $$
 
 <div align="center">
-<img src="./img/not_consist.png" style="zoom: 33%;" />
+<img src="./img/not_consist.png" style="width: 33%;" />
 </div>
 
 那么可能就会导致视觉上产生两个三角形面元旋转的方向相反的可能。要做的处理是让相邻的三角形面元的旋转角度差别不超过 $\pi$，使得 $\theta$ 能够连续变化
@@ -110,7 +110,7 @@ end
 ```
 
 <div align="center">
-<img src="./img/consist.png" style="zoom:33%;" />
+<img src="./img/consist.png" style="width:33%;" />
 </div>
 
 ### 3. Code
@@ -155,13 +155,13 @@ end
 ##### 旋转不一致的ARAP插值
 
 <div align="center">
-<img src="./img/ARAP.gif" style="zoom: 33%;" />
+<img src="./img/ARAP.gif" style="width: 33%;" />
 </div>
 
 ##### 旋转一致性的ARAP插值
 
 <div align="center">
-<img src="./img/ARAP_Rotation_Consist.gif" style="zoom:33%;" />
+<img src="./img/ARAP_Rotation_Consist.gif" style="width:33%;" />
 </div>
 
 ## 5. Summary
