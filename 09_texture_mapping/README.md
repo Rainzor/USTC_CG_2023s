@@ -6,7 +6,9 @@
 
 用 OpenGL 实现纹理映射
 
-- 用 [05_parameterization](../05_parameterization/) 中参数化结果作为纹理坐标(u,v)，可以预计算，也可在线计算
+- 用 [Laplace Editing](../06_laplacian_mesh) 为代码框架进行修改
+
+- 用 [Parameterization](../05_parameterization/) 中参数化结果作为纹理坐标(u,v)，可以预计算，也可在线计算
 - 以 **bricks2.png** 图像作为纹理，给三角网格贴上纹理
 
 ## 2. Code
@@ -38,13 +40,11 @@ void textureMapping() {
 }
 ```
 
-<div STYLE="page-break-after:always;"></div>
-
 ## 3. Result
 
 #### 用户界面框架
 
-<center>
+<div align="center">
     <img style = "
         border-radius: 0.3125em;
         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
@@ -60,13 +60,13 @@ void textureMapping() {
         Figure 1.
     </div>
     <p> </p>
-</center>
+</div>
 
 由于作业是延续了作业6中Laplace变换的框架，所以可以同时处理纹理贴图和图形变形
 
 #### 对比
 
-<center>
+<div align="center">
     <img style = "
         border-radius: 0.3125em;
         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
@@ -87,6 +87,6 @@ void textureMapping() {
         Figure 2. Left: Uniform;Right:Cotangent
     </div>
     <p> </p>
-</center>
+</div>
 
 通过对比可以看到，cotangent权重更好的保持了角度的映射，贴图的纹理效果更好
