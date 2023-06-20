@@ -97,7 +97,7 @@ $$
 在具体实现上，考虑到当指定点个数 $n+1$ 固定后，$\{\mathbf p_i\}_{i=0}^{3n}$ 与 $\{\mathbf b_i\}_{i=0}^n$ 的系数转换矩阵 $T$是固定的 $(3n+1)\times(3n+1)$的矩阵 ，也可以通过预计算和预分解的方式，避免重复计算。
 
 $$
-T\mathbf p =\begin{pmatrix}\mathbf b\\0\\.\\.\\.\\0 \end{pmatrix}_{(3n+1)\times2} 
+T\mathbf p =\begin{pmatrix}\mathbf b\\ 0 \\ . \\ . \\ . \\ 0 \end{pmatrix}_{(3n+1)\times2}
 $$
 
 在获取到 $\{\mathbf p_i\}_{i=0}^{3n}$ 后，即可按照 **2.1** 的方法，构造一个4个指定点的插值曲线，其中矩阵 $M\in{R^{m\times4}}$ ,按照图1所示的方式，将各段曲线连接起来即可得到三次 Bézier 样条曲线。

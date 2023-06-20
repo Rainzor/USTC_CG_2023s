@@ -1,14 +1,12 @@
-# Report
+# Texture Mapping
 
-> Texture Mapping
->
 > Environment: Windows11, Visual Studio 2022, MATLAB R2023a
 
 ## 1. Assignment
 
 用 OpenGL 实现纹理映射
 
-- 用作业 5 中参数化结果作为纹理坐标(u,v)，可以预计算，也可在线计算
+- 用 [05_parameterization](../05_parameterization/) 中参数化结果作为纹理坐标(u,v)，可以预计算，也可在线计算
 - 以 **bricks2.png** 图像作为纹理，给三角网格贴上纹理
 
 ## 2. Code
