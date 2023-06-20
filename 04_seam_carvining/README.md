@@ -404,7 +404,8 @@ increaseWidth(increase);
 - [1] [Seam Carving for Content-Aware Image Resizing](http://graphics.cs.cmu.edu/courses/15-463/2012_fall/hw/proj3-seamcarving/imret.pdf)
 
 <div id="refer-anchor-1"></div>
-- [2] [Context-Aware Saliency Detection](https://www.researchgate.net/publication/51925347_Context-Aware_Saliency_Detection)
+
+-  [2] [Context-Aware Saliency Detection](https://www.researchgate.net/publication/51925347_Context-Aware_Saliency_Detection)
 
 ## 6 Appendix
 
