@@ -38,11 +38,13 @@ $$
 考虑到 Bézier 曲线在边界处的导函数具有如下性质
 
 $$
-\mathbf x'(t=0)=n(\mathbf b_1-\mathbf b_0), \\\mathbf x'(t=1)=n(\mathbf b_n-\mathbf b_{n-1})
+\mathbf x'(t=0)=n(\mathbf b_1-\mathbf b_0), \\
+\mathbf x'(t=1)=n(\mathbf b_n-\mathbf b_{n-1})
 $$
 
 $$
-\mathbf x''(t=0)={n(n-1)(\mathbf b_0-2 \mathbf b_{1}+\mathbf b_{2})},\\\mathbf x''(t=1)={n(n-1)(\mathbf b_{n-2}-2 \mathbf b_{n-1}+\mathbf b_{n})}
+\mathbf x''(t=0)={n(n-1)(\mathbf b_0-2 \mathbf b_{1}+\mathbf b_{2})},\\
+\mathbf x''(t=1)={n(n-1)(\mathbf b_{n-2}-2 \mathbf b_{n-1}+\mathbf b_{n})}
 $$
 
 那么只要为了实现样条曲线，需要在给点区间内，构造辅助点，使得在指定点 $\mathbf b_i$ 处曲线是 $C^2$ 连续的，如下图所示
@@ -96,7 +98,15 @@ $$
 在具体实现上，考虑到当指定点个数 $n+1$ 固定后, $\lbrace\mathbf p_i\rbrace _ {i=0}^{3n}$ 与 $\lbrace\mathbf b_i\rbrace _ {i=0}^n$ 的系数转换矩阵 $T$是固定的 $(3n+1)\times(3n+1)$的矩阵 ，也可以通过预计算和预分解的方式，避免重复计算。
 
 $$
-T\mathbf p =\begin{pmatrix}\mathbf b\\ 0 \\ . \\ . \\ . \\ 0 \end{pmatrix}_{(3n+1)\times2}
+T\mathbf p =
+\begin{pmatrix}\mathbf 
+ b\\ 
+ 0 \\
+ . \\
+ . \\
+ . \\ 
+ 0 
+\end{pmatrix}_{(3n+1)\times2}
 $$
 
 在获取到 $\lbrace\mathbf p_i\rbrace_{i=0}^{3n}$ 后，即可按照 **2.1** 的方法，构造一个4个指定点的插值曲线，其中矩阵 $M\in{R^{m\times4}}$ ,按照图1所示的方式，将各段曲线连接起来即可得到三次 Bézier 样条曲线。
