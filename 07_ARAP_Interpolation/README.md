@@ -77,8 +77,9 @@ $$
 那么在对各个边进行变换后会得到如下情况
 
 <div align="center">
-<img src="./img/Per-element-interp.png" style="width:50%;" />
+<img src="./img/Per-element-interp.png" style="width:30%;" />
 </div>
+
 
 为了重新复原出每个顶点的位置，需要进行求解线性通过变换后的 $E(t)$，得到顶点 $V(t)$，而由于 $D$ 矩阵构成的矩阵条件个数超过变量个数，故采取最小二乘法构造
 

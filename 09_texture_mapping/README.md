@@ -71,12 +71,12 @@ void textureMapping() {
         border-radius: 0.3125em;
         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
        	src="./img/uniform.png"
-        width = "40%">
+        width = "30%">
     <img style = "
         border-radius: 0.3125em;
         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
        	src="./img/cotangent.png"
-        width = "40%">
+        width = "30%">
     <br>
     <div style = "
         color: orange;
@@ -88,5 +88,6 @@ void textureMapping() {
     </div>
     <p> </p>
 </div>
+
 
 通过对比可以看到，cotangent权重更好的保持了角度的映射，贴图的纹理效果更好
