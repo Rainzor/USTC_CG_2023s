@@ -10,10 +10,10 @@
 
 ### 2.1  Bernstein 基函数法
 
-代码是基于 Bernstein 基函数的方法，对用户指定的输入点 $\{\mathbfb_i\}_{i=0}^n,b_i\in\R^{1\times2}$ 构造关于时间 $t$ 的函数
+代码是基于 Bernstein 基函数的方法，对用户指定的输入点 $\{\mathbf b_i\}_{i=0}^n,b_i\in R^{1\times2}$ 构造关于时间 $t$ 的函数
 
 $$
-\mathbfx(t) = \sum_{i=0}^nC_n^i(1-t)^it^{n-i}\mathbfb_i
+\mathbf x(t) = \sum_{i=0}^nC_n^i(1-t)^it^{n-i}\mathbf b_i
 $$
 
 上式可以转化成对离散时间参数序列 $\{t_k\}_{k=0}^m,t_k\in(0,1)$ 构造矩阵运算，矩阵 $M$ 是一个 $m\times n$ 的矩阵，下式是矩阵的第 $k$ 行
@@ -22,12 +22,12 @@ $$
 M(t_k,:) = \begin{bmatrix} C_n^0t_k^n, & C_n^1t_k^{n-1}(1-t), &...& C_n^{n-1}t_k(1-t)^{n-1}, & C_n^n(1-t)^n \end{bmatrix}
 $$
 
-矩阵 $M$ 与输入点 $\{\mathbfb_i\}_{i=0}^n$ 无关，可以通过预计算获得，不必重复构造。
+矩阵 $M$ 与输入点 $\{\mathbf b_i\}_{i=0}^n$ 无关，可以通过预计算获得，不必重复构造。
 
-那么获取曲线 $\mathbfx$ 关于参数 $t$ 的方程为
+那么获取曲线 $\mathbf x$ 关于参数 $t$ 的方程为
 
 $$
-\mathbfx = M\mathbfb
+\mathbf x = M\mathbf b
 $$
 
 ### 2.2 Bézier Spline
@@ -38,14 +38,14 @@ $$
 考虑到 Bézier 曲线在边界处的导函数具有如下性质
 
 $$
-\mathbfx'(t=0)=n(\mathbfb_1-\mathbfb_0), \\\mathbfx'(t=1)=n(\mathbfb_n-\mathbfb_{n-1})
+\mathbf x'(t=0)=n(\mathbf b_1-\mathbf b_0), \\\mathbf x'(t=1)=n(\mathbf b_n-\mathbf b_{n-1})
 $$
 
 $$
-\mathbfx''(t=0)={n(n-1)(\mathbfb_0-2 \mathbfb_{1}+\mathbfb_{2})},\\\mathbfx''(t=1)={n(n-1)(\mathbfb_{n-2}-2 \mathbfb_{n-1}+\mathbfb_{n})}
+\mathbf x''(t=0)={n(n-1)(\mathbf b_0-2 \mathbf b_{1}+\mathbf b_{2})},\\\mathbf x''(t=1)={n(n-1)(\mathbf b_{n-2}-2 \mathbf b_{n-1}+\mathbf b_{n})}
 $$
 
-那么只要为了实现样条曲线，需要在给点区间内，构造辅助点，使得在指定点 $\mathbfb_i$ 处曲线是$C^2$
+那么只要为了实现样条曲线，需要在给点区间内，构造辅助点，使得在指定点 $\mathbf b_i$ 处曲线是$C^2$
 连续的，如下图所示
 
 <div align="center">
@@ -67,7 +67,7 @@ $$
 </div>
 
 
-假设输入点是： $\{\mathbfb_i\}_{i=0}^n$，需要的构造的点为 $\{\mathbfp_i\}_{i=0}^{3n}$,假设时间序列是均匀的，那么则要满足以下 $3n+1$个方程
+假设输入点是： $\{\mathbf b_i\}_{i=0}^n$，需要的构造的点为 $\{\mathbf p_i\}_{i=0}^{3n}$,假设时间序列是均匀的，那么则要满足以下 $3n+1$个方程
 
 ##### $C^0$ continuity
 
@@ -94,13 +94,13 @@ p_1 = \frac{b_2+b_0}{2}\\
 p_{3n-1} = \frac{b_{3n-2}+b_{3n}}{2}
 $$
 
-在具体实现上，考虑到当指定点个数 $n+1$ 固定后，$\{\mathbfp_i\}_{i=0}^{3n}$ 与 $\{\mathbfb_i\}_{i=0}^n$ 的系数转换矩阵 $T$是固定的 $(3n+1)\times(3n+1)$的矩阵 ，也可以通过预计算和预分解的方式，避免重复计算。
+在具体实现上，考虑到当指定点个数 $n+1$ 固定后，$\{\mathbf p_i\}_{i=0}^{3n}$ 与 $\{\mathbf b_i\}_{i=0}^n$ 的系数转换矩阵 $T$是固定的 $(3n+1)\times(3n+1)$的矩阵 ，也可以通过预计算和预分解的方式，避免重复计算。
 
 $$
-T\mathbfp =\begin{pmatrix}\mathbfb\\0\\.\\.\\.\\0 \end{pmatrix}_{(3n+1)\times2} 
+T\mathbf p =\begin{pmatrix}\mathbf b\\0\\.\\.\\.\\0 \end{pmatrix}_{(3n+1)\times2} 
 $$
 
-在获取到 $\{\mathbfp_i\}_{i=0}^{3n}$ 后，即可按照 **2.1** 的方法，构造一个4个指定点的插值曲线，其中矩阵 $M\in{\R^{m\times4}}$ ,按照图1所示的方式，将各段曲线连接起来即可得到三次 Bézier 样条曲线。
+在获取到 $\{\mathbf p_i\}_{i=0}^{3n}$ 后，即可按照 **2.1** 的方法，构造一个4个指定点的插值曲线，其中矩阵 $M\in{R^{m\times4}}$ ,按照图1所示的方式，将各段曲线连接起来即可得到三次 Bézier 样条曲线。
 
 <div STYLE="page-break-after: always;"></div>
 
