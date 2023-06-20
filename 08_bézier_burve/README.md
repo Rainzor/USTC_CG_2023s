@@ -38,13 +38,17 @@ $$
 考虑到 Bézier 曲线在边界处的导函数具有如下性质
 
 $$
+\begin{aligned}
 \mathbf x'(t=0)=n(\mathbf b_1-\mathbf b_0), \\
 \mathbf x'(t=1)=n(\mathbf b_n-\mathbf b_{n-1})
+\end{aligned}
 $$
 
 $$
+\begin{aligned}
 \mathbf x''(t=0)={n(n-1)(\mathbf b_0-2 \mathbf b_{1}+\mathbf b_{2})},\\
 \mathbf x''(t=1)={n(n-1)(\mathbf b_{n-2}-2 \mathbf b_{n-1}+\mathbf b_{n})}
+\end{aligned}
 $$
 
 那么只要为了实现样条曲线，需要在给点区间内，构造辅助点，使得在指定点 $\mathbf b_i$ 处曲线是 $C^2$ 连续的，如下图所示
@@ -91,8 +95,10 @@ $$
 **Boundary**
 
 $$
+\begin{aligned}
 p_1 = \frac{b_2+b_0}{2}\\
 p_{3n-1} = \frac{b_{3n-2}+b_{3n}}{2}
+\end{aligned}
 $$
 
 在具体实现上，考虑到当指定点个数 $n+1$ 固定后, $\lbrace\mathbf p_i\rbrace _ {i=0}^{3n}$ 与 $\lbrace\mathbf b_i\rbrace _ {i=0}^n$ 的系数转换矩阵 $T$是固定的 $(3n+1)\times(3n+1)$的矩阵 ，也可以通过预计算和预分解的方式，避免重复计算。
