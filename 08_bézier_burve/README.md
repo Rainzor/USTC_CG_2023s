@@ -16,7 +16,7 @@ $$
 \mathbf x(t) = \sum_{i=0}^nC_n^i(1-t)^it^{n-i}\mathbf b_i
 $$
 
-上式可以转化成对离散时间参数序列 $\lbracet_k\rbrace_{k=0}^m,t_k\in(0,1)$ 构造矩阵运算，矩阵 $M$ 是一个 $m\times n$ 的矩阵，下式是矩阵的第 $k$ 行
+上式可以转化成对离散时间参数序列 $\lbrace t_k\rbrace_{k=0}^m,t_k\in(0,1)$ 构造矩阵运算，矩阵 $M$ 是一个 $m\times n$ 的矩阵，下式是矩阵的第 $k$ 行
 
 $$
 M(t_k,:) = \begin{bmatrix} C_n^0t_k^n, & C_n^1t_k^{n-1}(1-t), &...& C_n^{n-1}t_k(1-t)^{n-1}, & C_n^n(1-t)^n \end{bmatrix}
