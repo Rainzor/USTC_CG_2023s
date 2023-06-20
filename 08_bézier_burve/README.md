@@ -67,28 +67,25 @@ $$
 </div>
 
 
-假设输入点是： $\{\mathbf b_i\}_{i=0}^n$，需要的构造的点为 $\{\mathbf p_i\}_{i=0}^{3n}$,假设时间序列是均匀的，那么则要满足以下 $3n+1$个方程
+假设输入点是:  $\{\mathbf b_i\}_{i=0}^n$，需要的构造的点为  $\{\mathbf p_i\}_{i=0}^{3n}$,假设时间序列是均匀的，那么则要满足以下 $3n+1$个方程
 
-##### $C^0$ continuity
+$C^0$ **continuity**
 
 $$
 p_{3k} = b_k\quad k=0,1,2,...,n
 $$
 
-##### $C^1 $continuity
-
+$C^1 $**continuity**
 $$
 p_{i}-p_{i-1} = p_{i+1}-p_{i}\quad i=3,6,9,....,3(n-1)
 $$
 
-##### $C^2 $ continuity
-
+$C^2 $ **continuity**
 $$
 p_{i}-2p_{i-1}+p_{i-2} = p_{i+2}-2p_{i+1}+p_i\quad i=3,6,9,....,3(n-1)
 $$
 
-##### Boundary
-
+**Boundary**
 $$
 p_1 = \frac{b_2+b_0}{2}\\
 p_{3n-1} = \frac{b_{3n-2}+b_{3n}}{2}
